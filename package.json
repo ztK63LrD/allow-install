@@ -1,0 +1,57 @@
+{
+  "name": "allow-install",
+  "version": "1.0.2",
+  "description": "Restrict the use of specific package managers on projects",
+  "main": "dist/index.js",
+  "bin": {
+    "allow-install": "dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development rollup -c -w",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "bundle": "rollup --config",
+    "pub": "npm run build && npm version patch && npm publish",
+    "pub:minor": "npm run build && npm version minor && npm publish",
+    "pub:major": "npm run build && npm version major && npm publish"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ztK63LrD/allow-install.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ztK63LrD/allow-install/issues"
+  },
+  "homepage": "https://github.com/ztK63LrD/allow-install#readme",
+  "keywords": [
+    "pnpm",
+    "cnpm",
+    "npm",
+    "yarn",
+    "bun"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "ztk63lrd",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/plugin-transform-runtime": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/runtime": "^7.27.4",
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-replace": "^6.0.2",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^22.15.29",
+    "cross-env": "^7.0.3",
+    "rollup": "^4.41.1",
+    "tslib": "^2.8.1"
+  }
+}
