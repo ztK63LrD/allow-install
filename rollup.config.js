@@ -1,6 +1,8 @@
 import { babel } from '@rollup/plugin-babel'
 import typescript from '@rollup/plugin-typescript'
 import replace from '@rollup/plugin-replace'
+import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
 import terser from '@rollup/plugin-terser'
 import alias from '@rollup/plugin-alias'
 import path from 'path'
@@ -28,12 +30,17 @@ export default {
         // Babel 配置
         babel({
             babelHelpers: 'runtime',
-            exclude: ['/node_modules/**'], // 排除node_modules目录下的@vueuse模块，避免重复打包
-            extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
+            exclude: ['node_modules/**'], // 排除node_modules目录下的@vueuse模块，避免重复打包
+            extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'], // 指定需要转换的文件扩展名
             babelrc: true // 启用.babelrc 配置，避免重复配置插件
         }),
-        // 压缩打包后的文件
-        isPro && terser(), // 生产环境才压缩代码
+        // 解析第三方模块
+        resolve({
+            extensions: ['.mjs', '.js', '.json', '.ts', '.vue'], // 添加.ts和.vue扩展名支持
+            browser: true, // 优化浏览器环境
+        }),
+        // 将CommonJS模块转换为ES6模块，以便打包
+        commonjs(),
         // TypeScript 配置
         typescript(),
         // 替换打包结果中在浏览器中不兼容的代码，例如process.env.NODE_ENV
@@ -41,6 +48,8 @@ export default {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV), // 替换代码中的环境变量
             preventAssignment: true // 防止替换赋值表达式，例如process.env.NODE_ENV = 'production'
         }),
+        // 压缩打包后的文件
+        isPro && terser(), // 生产环境才压缩代码
         // 配置别名路径
         alias({
             entries: [
