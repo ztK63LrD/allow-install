@@ -11,7 +11,7 @@
     "dev": "cross-env NODE_ENV=development rollup -c -w",
     "build": "cross-env NODE_ENV=production rollup -c",
     "bundle": "rollup --config",
-    "test": "jest --coverage",
+    "test": "cross-env-shell \"clear || cls\" && jest --watch --coverage",
     "pub": "npm run build && npm version patch && npm publish",
     "pub:minor": "npm run build && npm version minor && npm publish",
     "pub:major": "npm run build && npm version major && npm publish"
@@ -61,9 +61,10 @@
     "chalk": "^4.1.2",
     "jest": "^29.7.0",
     "jest-module-name-mapper": "^0.1.5",
+    "jest-watch-typeahead": "^2.2.2",
     "ts-jest": "^29.3.4"
   },
- "jest": {
+  "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
     "transform": {
@@ -76,8 +77,11 @@
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!chalk)"
-    ], 
-    "extensionsToTreatAsEsm": [".ts", ".tsx"],
+    ],
+    "extensionsToTreatAsEsm": [
+      ".ts",
+      ".tsx"
+    ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1",
       "^(\\.{1,2}/.*)\\.js$": "$1"

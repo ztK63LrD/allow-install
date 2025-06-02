@@ -66,10 +66,12 @@ const messages_en = new Map<string, any>([
     ['CURRENT_NODE_MODULES', 'Please run this script in the project root directory!']
 ])
 
+const getRoot = () => process.env.INIT_CWD || process.cwd(); // 改为函数获取
+
 export {
     PMList,
     npmName,
-    root,
+    getRoot,
     sep,
     resolves,
     messages,

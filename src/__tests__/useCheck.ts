@@ -33,13 +33,15 @@ describe('useCheck', () => {
         (getLanguageByRegistry as jest.Mock).mockReturnValue('en'); // 模拟getLanguageByRegistry返回值
         process.argv = ['node', 'script.js']; // 模拟命令行参数
     });
-
     afterEach(() => {
-        processExitSpy.mockRestore();
+        processExitSpy.mockRestore(); // 恢复原始方法
         loggerInfoSpy.mockRestore(); // 恢复原始方法
     });
+    
+
     // 确保当前工作目录不在node_modules目录中运行,假设当前工作目录在node_modules中，则抛出错误并退出程序。
     test('假设当前工作目录在node_modules目录中运行', () => {
+        jest.spyOn(require('@/constant'), 'getRoot').mockReturnValue('/path/to/node_modules'); // 模拟获取root的函数返回node_modules路径
         expect(() => useCheck()).toThrow('process.exit called'); // 断言抛出错误
         expect(loggerInfoSpy).toHaveBeenCalledWith(expect.stringMatching(/请在项目根目录下运行此脚本！|Please run this script in the project root directory!/));
         expect(processExitSpy).toHaveBeenCalledWith(1); // 验证退出代码为1

@@ -1,5 +1,5 @@
 import { existsSync } from "fs"
-import { PMList, root, resolves, messages, messages_en } from "@/constant"
+import { PMList, getRoot, resolves, messages, messages_en } from "@/constant"
 import { useGetTypeVersion } from "@/hook/useGetTypeVersion"
 import { logger } from "@/utils/chalk"
 import { getLanguageByRegistry } from "@/utils/language"
@@ -9,6 +9,7 @@ export const useCheck = () => {
     const argv = process.argv.slice(2) // 获取命令行参数
     const wantedPM = argv[0] // 获取用户选择的包管理器名称
     const usedPM = useGetTypeVersion() // 获取当前项目使用的包管理器信息
+    const root = getRoot(); // 获取当前工作目录的绝对路径
 
     // 确保当前工作目录不在node_modules目录中运行
     if (root?.includes('node_modules')) {
