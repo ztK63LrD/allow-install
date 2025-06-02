@@ -1,6 +1,6 @@
 {
   "name": "allow-install",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Restrict the use of specific package managers on projects",
   "main": "dist/index.js",
   "type": "module",
