@@ -11,22 +11,22 @@ export const useCheck = () => {
     const usedPM = useGetTypeVersion() // 获取当前项目使用的包管理器信息
     const root = getRoot(); // 获取当前工作目录的绝对路径
 
-    // 确保当前工作目录不在node_modules目录中运行
+    // 01 确保当前工作目录不在node_modules目录中运行
     if (root?.includes('node_modules')) {
         log('CURRENT_NODE_MODULES')
         process.exit(1)
     }
-    // 确保当前工作目录存在package.json文件
+    // 02 确保当前工作目录存在package.json文件
     if (!existsSync(resolves.get('pkg_path'))) {
         log("NO_PKG")
         process.exit(1)
     }
-    // 校验命令行参数是否为空，若是则退出程序执行并提示用户选择包管理器名称
+    // 03 校验命令行参数是否为空，若是则退出程序执行并提示用户选择包管理器名称
     if (argv.length === 0) {
         log('NO_PM_PROVIDER')
         process.exit(1)
     }
-    // 校验用户选择的包管理器是否有效，若是则退出程序执行并提示用户选择有效的包管理器名称
+    // 04 校验用户选择的包管理器是否有效，若是则退出程序执行并提示用户选择有效的包管理器名称
     if (!PMList.includes(wantedPM)) {
         log("NONLICET_PM", wantedPM)
         process.exit(1)

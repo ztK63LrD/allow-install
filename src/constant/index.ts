@@ -37,7 +37,7 @@ const resolves = new Map<string, any>([
 const messages = new Map<string, any>([
     ['NO_PM_PROVIDER', `请提供想要使用的包管理器: allow-install <${PMList.join('、')}>`],
     ['NONLICET_PM', (extra: string) => `${extra && extra} 不是有效的包管理器. 请从如下包管理器中任选其一: ${PMList.join('、')}`],
-    ['MIS_MATCH', (current: string, setted: string) => `当前运行的${current ? '(' + current + ')' : ''}包管理器与设置的${setted ? '(' + setted + ')' : ''}不一致`],
+    ['MIS_MATCH', (current: string, setted: string) => `当前运行的${current ? '(' + current + ')' : ''} 包管理器与设置的 ${setted ? '(' + setted + ')' : ''}不一致`],
     ['EXIT', '依赖安装失败！请删除（如果有）npminstall-debug.log文件后重试'],
     ['UN_INSTALLED', (PM: string) => `node_modules不存在，请使用${orders.get(PM) || 'npm i'}进行安装`],
     ['UN_MATCHED_INSTALL', (puts: any) => `检测到您可能使用了不匹配的包管理器安装了依赖${puts.length ? '（' + puts.join('、') + ')' : ''},请卸载或使用正确的管理器安装后重试`],
