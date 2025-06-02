@@ -1,6 +1,6 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
 'use strict';
+import run from "./hook";
 
-// 限制包管理工具
-import { useGetPM } from '@/hook/useGetPM'
-useGetPM()
+// 执行
+run()

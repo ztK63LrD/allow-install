@@ -3,9 +3,6 @@
   "version": "1.0.2",
   "description": "Restrict the use of specific package managers on projects",
   "main": "dist/index.js",
-  "bin": {
-    "allow-install": "dist/index.js"
-  },
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup -c -w",
@@ -50,6 +47,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/node": "^22.15.29",
+    "chalk": "^5.4.1",
     "cross-env": "^7.0.3",
     "rollup": "^4.41.1",
     "tslib": "^2.8.1"

@@ -35,6 +35,9 @@ dependencies:
   '@types/node':
     specifier: ^22.15.29
     version: 22.15.29
+  chalk:
+    specifier: ^5.4.1
+    version: 5.4.1
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
@@ -1480,6 +1483,11 @@ packages:
 
   /caniuse-lite@1.0.30001720:
     resolution: {integrity: sha512-Ec/2yV2nNPwb4DnTANEV99ZWwm3ZWfdlfkQbWSDDt+PsXEVYwlhPH8tdMaPunYTKKmz7AnHi2oNEi1GcmKCD8g==}
+    dev: false
+
+  /chalk@5.4.1:
+    resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: false
 
   /commander@2.20.3:
