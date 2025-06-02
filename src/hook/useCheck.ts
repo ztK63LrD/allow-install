@@ -12,7 +12,7 @@ export const useCheck = () => {
 
     // 确保当前工作目录不在node_modules目录中运行
     if (root?.includes('node_modules')) {
-        logger.error('请在项目根目录下运行此脚本！\n')
+        log('CURRENT_NODE_MODULES')
         process.exit(1)
     }
     // 确保当前工作目录存在package.json文件

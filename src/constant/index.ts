@@ -46,7 +46,8 @@ const messages = new Map<string, any>([
     ['GUIDE_MIS_MATCH_PNPM', '请删除（如果有）.pnpm-debug.log文件后重试'],
     ['NO_PKG', 'package.json文件不存在'],
     ['NO_PRE_HOOK', '未定义preinstall'],
-    ['MORE_USED', '您应当仅在开始(如：start)和preinstall中使用该脚本']
+    ['MORE_USED', '您应当仅在开始(如：start)和preinstall中使用该脚本'],
+    ['CURRENT_NODE_MODULES', '请在项目根目录下运行此脚本！']
 ])
 // 英文提示信息映射表，用于将不同的错误或提示信息的文本进行国际化处理。例如，可以将'NO_PM_PROVIDER'映射到一条询问用户提供包管理器的信息的消息（英文版）。
 const messages_en = new Map<string, any>([
@@ -62,6 +63,7 @@ const messages_en = new Map<string, any>([
     ['NO_PKG', `The 'package.json' file does not exist`],
     ['NO_PRE_HOOK', 'Undefined preinstall'],
     ['MORE_USED', 'You should only use this script at the start (e.g., start) and preinstall'],
+    ['CURRENT_NODE_MODULES', 'Please run this script in the project root directory!']
 ])
 
 export {
